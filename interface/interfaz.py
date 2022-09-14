@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
+
 from PyQt5.QtWidgets import *  
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from UI_design import *
+
+
 
 class UI_MainWindow(QMainWindow):
     def __init__(self,*args,**kwargs):
