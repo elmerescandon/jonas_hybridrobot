@@ -25,7 +25,29 @@ def setupUi(self):
     self.textBrowser.setObjectName("textBrowser")
     self.textBrowser.setText("Robot Jonas")
 
+    self.D_button = QPushButton(self.centralwidget)
+    self.D_button.setGeometry(QRect(370, 330, 50, 50))
+    self.D_button.setObjectName("D_button")
+    self.D_button.pressed.connect(lambda: self.button_pressed('DOWN'))
+    self.D_button.released.connect(self.button_released)
 
+    self.L_button = QPushButton(self.centralwidget)
+    self.L_button.setGeometry(QRect(530, 240, 50, 50))
+    self.L_button.setObjectName("L_button")
+    self.L_button.pressed.connect(lambda: self.button_pressed('LEFT'))
+    self.L_button.released.connect(self.button_released)
+
+    self.U_button = QPushButton(self.centralwidget)
+    self.U_button.setGeometry(QRect(380, 160, 50, 50))
+    self.U_button.setObjectName("U_button")
+    self.U_button.pressed.connect(lambda: self.button_pressed('UP'))
+    self.U_button.released.connect(self.button_released)
+
+    self.R_button = QPushButton(self.centralwidget)
+    self.R_button.setGeometry(QRect(230, 250, 50, 50))
+    self.R_button.setObjectName("R_button")
+    self.R_button.pressed.connect(lambda: self.button_pressed('RIGHT'))
+    self.R_button.released.connect(self.button_released)
 
     self.UR_button = QPushButton(self.centralwidget)
     self.UR_button.setGeometry(QRect(450, 200, 50, 50))
@@ -47,49 +69,37 @@ def setupUi(self):
     self.UL_button.setObjectName("UL_button")
 
 
-    self.face2_button = QPushButton(self.centralwidget)
-    self.face2_button.setGeometry(QRect(660, 170, 80, 61))
-    self.face2_button.setObjectName("face2_button")
-
+    # Diseño de todos los gestos posibles
 
     self.face1_button = QPushButton(self.centralwidget)
     self.face1_button.setGeometry(QRect(660, 90, 80, 61))
     self.face1_button.setObjectName("face1_button")
+    self.face1_button.clicked.connect(lambda: self.set_face('CARA 1'))
+    self.face1_button.clicked.connect(lambda: self.set_servos('GESTO 1'))
 
+    self.face2_button = QPushButton(self.centralwidget)
+    self.face2_button.setGeometry(QRect(660, 170, 80, 61))
+    self.face2_button.setObjectName("face2_button")
+    self.face2_button.clicked.connect(lambda: self.set_face('CARA 2'))
+    self.face2_button.clicked.connect(lambda: self.set_servos('GESTO 2'))
 
     self.face3_button = QPushButton(self.centralwidget)
     self.face3_button.setGeometry(QRect(660, 250, 80, 61))
     self.face3_button.setObjectName("face3_button")
-
+    self.face3_button.clicked.connect(lambda: self.set_face('CARA 3'))
+    self.face3_button.clicked.connect(lambda: self.set_servos('GESTO 3'))
 
     self.face4_button = QPushButton(self.centralwidget)
     self.face4_button.setGeometry(QRect(660, 330, 80, 61))
     self.face4_button.setObjectName("face4_button")
-
+    self.face4_button.clicked.connect(lambda: self.set_face('CARA 4'))
+    self.face4_button.clicked.connect(lambda: self.set_servos('GESTO 4'))
 
     self.face5_button = QPushButton(self.centralwidget)
     self.face5_button.setGeometry(QRect(660, 400, 80, 61))
     self.face5_button.setObjectName("face5_button")
-
-
-    self.D_button = QPushButton(self.centralwidget)
-    self.D_button.setGeometry(QRect(370, 330, 50, 50))
-    self.D_button.setObjectName("D_button")
-
-
-    self.L_button = QPushButton(self.centralwidget)
-    self.L_button.setGeometry(QRect(530, 240, 50, 50))
-    self.L_button.setObjectName("L_button")
-
-    self.U_button = QPushButton(self.centralwidget)
-    self.U_button.setGeometry(QRect(380, 160, 50, 50))
-    self.U_button.setObjectName("U_button")
-
-
-    self.R_button = QPushButton(self.centralwidget)
-    self.R_button.setGeometry(QRect(230, 250, 50, 50))
-    self.R_button.setObjectName("R_button")
-
+    self.face5_button.clicked.connect(lambda: self.set_face('CARA 5'))
+    self.face5_button.clicked.connect(lambda: self.set_servos('GESTO 5'))
     
     self.START_button =QPushButton(self.centralwidget)
     self.START_button.setGeometry(QRect(50, 150, 111, 51))
@@ -130,9 +140,6 @@ def setupUi(self):
     self.R_button.setText(_translate("MainWindow", "RIGHT"))
     self.START_button.setText(_translate("MainWindow", "START"))
     self.STOP_button.setText(_translate("MainWindow", "STOP"))
-
-
-
 
     QMetaObject.connectSlotsByName(self.centralwidget)
     self.setCentralWidget(self.centralwidget)

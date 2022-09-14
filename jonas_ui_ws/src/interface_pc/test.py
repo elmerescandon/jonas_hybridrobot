@@ -4,6 +4,7 @@
 import sys
 import rospy
 from std_msgs.msg import String
+from std_msgs.msg import Int16MultiArray
 # from PyQt5 import QtGui
 
 import sys
@@ -15,27 +16,56 @@ from UI_design import *
 
 
 class UI_MainWindow(QMainWindow):
-    def __init__(self,*args,**kwargs):
-        super(UI_MainWindow,self).__init__(*args,**kwargs)
+    def __init__(sel,*args,**kwargs):
+        super(UI_MaifnWindow,self).__init__(*args,**kwargs)
         setupUi(self)
-        self.pub = rospy.Publisher('pyqt_topic',String,queue_size = 10)  
+
+        # Initialize nodes
         rospy.init_node('pyqt_gui')
+
+        # Create topics
+        self.pub_mov = rospy.Publisher('mov_coms_topic',Int16MultiArray,queue_size = 10)  
+        self.pub_face = rospy.Publisher('face_coms_topic',String,queue_size = 10)
+        self.pub_servos_commands = rospy.Publisher('servos_coms_topic',String,queue_size = 10)
+
+
+        # Additional Widgets
         self.slider.valueChanged.connect(self.changeValue)
+
+        self.timer_mov = QTimer()   
+        self.timer_mov.timeout.connect(self.button_timeout)
+
+        self.direction = ''
         self.current_value = 0
+ 
+        # Message to send - Multiarray
+        self.mov_msg = Int16MultiArray()
 
+        self.mov_dic = {'UP': 1, 'DOWN': 2, 'LEFT':3, 'RIGHT':4}
 
-    def publish_topic(self):
-        self.pub.publish(str(self.current_value))
+    def set_face(self,expression):
+        self.pub_face.publish(expression)
+
+    def set_servos(self,gesture):
+        self.pub_servos_commands.publish(gesture)
+
+    def button_pressed(self, direction):
+        self.direction = direction
+        self.timer_mov.start(100)
+
+    def button_released(self):
+        self.timer_mov.stop()
+    
+    def button_timeout(self):
+        self.mov_msg.data = [self.mov_dic[self.direction],self.current_value]
+        print(self.direction)
+        print(self.current_value)
+        self.pub_mov.publish(self.mov_msg)
 
     def changeValue(self,value):
         self.my_label.setText("num: " + str(value))
         self.current_value = value
-        self.publish_topic()
         
-
-
-    # def retranslateUi(self, QMainWindow):
-
 
 if __name__ == "__main__":
     import sys
@@ -44,73 +74,5 @@ if __name__ == "__main__":
     ui = UI_MainWindow()
     ui.show()
     sys.exit(app.exec_())
-
-
-
-# class PyGui(QMainWindow):
-#     def __init__(self, *args, **kwargs):
-
-#         super(PyGui,self).__init__(*args,**kwargs)
-#         self.setFixedWidth(800)
-#         self.setFixedHeight(600)
-
-#         # Inicializar el objeto principal
-#         self.centralwidget = QWidget()
-#         self.centralwidget.setObjectName("centralwidget")
-
-#         self.pub = rospy.Publisher('pyqt_topic',String,queue_size = 10)   
-
-#         # Iniciar ROS
-#         rospy.init_node('pyqt_gui')
-#         self.current_value = 0
-
-#         my_layout = QHBoxLayout(self.centralwidget)
-
-#         my_btn = QPushButton(self.centralwidget)
-#         my_btn.setText("Publisher") 
-#         my_btn.setFixedWidth(130)
-#         my_btn.clicked.connect(self.publish_topic)
-
-
-#         my_layout.addWidget(my_btn)
-#         my_layout.addSpacing(50)
-
-#         self.my_label = QLabel(self.centralwidget)
-#         self.my_label.setFixedWidth(140)
-#         self.my_label.setText("num: " + str(0))
-#         self.my_label.setEnabled(False)
-
-#         my_layout.addWidget(self.my_label)
-
-#         my_slider = QSlider(self.centralwidget)
-#         my_slider.setMinimum(0)
-#         my_slider.setMaximum(99)
-#         my_slider.setOrientation(Qt.Horizontal)
-#         my_slider.valueChanged.connect(self.changeValue)
-
-#         my_vlay = QVBoxLayout(self.centralwidget)
-#         my_vlay.addWidget(my_slider)
-        
-#         layout = QVBoxLayout(self.centralwidget)
-#         layout.addLayout(my_layout)
-#         layout.addLayout(my_vlay)
-#         self.setLayout(layout)
-
-#     def publish_topic(self):
-#         self.pub.public(str(self.current_value))
-
-#     def changeValue(self,value):
-#         self.my_label.setText("num: " + str(value))
-#         self.current_value = value
-
-# if __name__ == "__main__":
-#     app = QApplication(sys.argv)
-#     app.setStyle('Fusion')
-    
-#     ui = PyGui()
-#     ui.show()
-
-#     sys.exit(app.exec_())
-
 
 
