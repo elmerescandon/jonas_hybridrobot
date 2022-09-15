@@ -25,7 +25,7 @@ class App(QtWidgets.QWidget):
         self.label = QtWidgets.QLabel(self)
         timer = QtCore.QTimer(self)
         timer.timeout.connect(self.update_image)
-        timer.start(100)
+        timer.start(200)
         self.showFullScreen()
         self.update_image()
         
