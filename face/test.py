@@ -20,3 +20,5 @@ test_img = img_matrix[:,:,7] > 75
 
 plt.imshow(img_matrix[:,:,7]>10,cmap='gray')
 plt.show()
+
+# Alegre, Triste, Molesto, Normal

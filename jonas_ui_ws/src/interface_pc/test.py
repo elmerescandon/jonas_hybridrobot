@@ -68,7 +68,6 @@ class UI_MainWindow(QMainWindow):
         
 
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     ui = UI_MainWindow()
