@@ -5,9 +5,9 @@ import sys
 import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Int16MultiArray
+from std_msgs.msg import Int8
 # from PyQt5 import QtGui
 
-import sys
 
 from PyQt5.QtWidgets import *  
 from PyQt5.QtGui import *
@@ -25,7 +25,7 @@ class UI_MainWindow(QMainWindow):
 
         # Create topics
         self.pub_mov = rospy.Publisher('mov_coms_topic',Int16MultiArray,queue_size = 10)  
-        self.pub_face = rospy.Publisher('face_coms_topic',String,queue_size = 10)
+        self.pub_face = rospy.Publisher('face_coms_topic',Int8,queue_size = 10)
         self.pub_servos_commands = rospy.Publisher('servos_coms_topic',String,queue_size = 10)
 
 
