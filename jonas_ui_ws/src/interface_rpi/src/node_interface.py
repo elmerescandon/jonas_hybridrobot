@@ -3,11 +3,15 @@
 
 import sys
 import rospy
+from os.path import expanduser
+
 
 from std_msgs.msg import Int8
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-main_path = '/home/raul/jonas_hybridrobot/jonas_ui_ws/src/interface_rpi/src/faces'
+home = expanduser("~")
+
+main_path = home + '/jonas_hybridrobot/jonas_ui_ws/src/interface_rpi/src/faces'
 
 path_of_image = [ main_path + '/smile_1.png', main_path + '/smile_2.png', main_path + '/smile_3.png', main_path + '/smile_4.png']
 
