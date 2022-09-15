@@ -17,7 +17,7 @@ from UI_design import *
 
 class UI_MainWindow(QMainWindow):
     def __init__(sel,*args,**kwargs):
-        super(UI_MaifnWindow,self).__init__(*args,**kwargs)
+        super(UI_MainWindow,self).__init__(*args,**kwargs)
         setupUi(self)
 
         # Initialize nodes
