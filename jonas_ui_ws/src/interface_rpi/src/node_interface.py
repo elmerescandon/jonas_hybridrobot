@@ -51,7 +51,7 @@ class App(QtWidgets.QWidget):
         timer = QtCore.QTimer(self)
         timer.timeout.connect(self.update_image)
         timer.start(200)
-        # self.showFullScreen()
+        self.showFullScreen()
         self.update_image()
         
 
