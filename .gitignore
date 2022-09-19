@@ -1,4 +1,3 @@
-jonas_ui_ws/build
-jonas_ui_ws/devel
-jonas_ui_ws/src/CMakeLists.txt
-jonas_ui_ws/.catkin_workspace
+jonas_arms_workspace/build
+jonas_arms_workspace/devel
+jonas_arms_workspace/.catkin_workspace
