@@ -1,3 +1,4 @@
 jonas_arms_workspace/build
 jonas_arms_workspace/devel
 jonas_arms_workspace/.catkin_workspace
+jonas_arms_workspace/src/CMakeLists.txt
