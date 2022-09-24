@@ -26,7 +26,7 @@ def setupUi(self):
     self.textBrowser.setText("Robot Jonas")
 
     self.D_button = QPushButton(self.centralwidget)
-    self.D_button.setGeometry(QRect(370, 330, 50, 50))
+    self.D_button.setGeometry(QRect(375, 330, 50, 50))
     self.D_button.setObjectName("D_button")
     self.D_button.pressed.connect(lambda: self.button_pressed('DOWN'))
     self.D_button.released.connect(self.button_released)
@@ -38,7 +38,7 @@ def setupUi(self):
     self.L_button.released.connect(self.button_released)
 
     self.U_button = QPushButton(self.centralwidget)
-    self.U_button.setGeometry(QRect(380, 160, 50, 50))
+    self.U_button.setGeometry(QRect(375, 160, 50, 50))
     self.U_button.setObjectName("U_button")
     self.U_button.pressed.connect(lambda: self.button_pressed('UP'))
     self.U_button.released.connect(self.button_released)
@@ -72,31 +72,31 @@ def setupUi(self):
     # Diseño de todos los gestos posibles
 
     self.face1_button = QPushButton(self.centralwidget)
-    self.face1_button.setGeometry(QRect(660, 90, 80, 61))
+    self.face1_button.setGeometry(QRect(660, 100, 80, 61))
     self.face1_button.setObjectName("face1_button")
     self.face1_button.clicked.connect(lambda: self.set_face('blink'))
     self.face1_button.clicked.connect(lambda: self.set_servos('GESTO 1'))
 
     self.face2_button = QPushButton(self.centralwidget)
-    self.face2_button.setGeometry(QRect(660, 170, 80, 61))
+    self.face2_button.setGeometry(QRect(660, 180, 80, 61))
     self.face2_button.setObjectName("face2_button")
     self.face2_button.clicked.connect(lambda: self.set_face('fire'))
     self.face2_button.clicked.connect(lambda: self.set_servos('GESTO 2'))
 
     self.face3_button = QPushButton(self.centralwidget)
-    self.face3_button.setGeometry(QRect(660, 250, 80, 61))
+    self.face3_button.setGeometry(QRect(660, 260, 80, 61))
     self.face3_button.setObjectName("face3_button")
     self.face3_button.clicked.connect(lambda: self.set_face('heart'))
     self.face3_button.clicked.connect(lambda: self.set_servos('GESTO 3'))
 
     self.face4_button = QPushButton(self.centralwidget)
-    self.face4_button.setGeometry(QRect(660, 330, 80, 61))
+    self.face4_button.setGeometry(QRect(660, 340, 80, 61))
     self.face4_button.setObjectName("face4_button")
     self.face4_button.clicked.connect(lambda: self.set_face('music'))
     self.face4_button.clicked.connect(lambda: self.set_servos('GESTO 4'))
 
     self.face5_button = QPushButton(self.centralwidget)
-    self.face5_button.setGeometry(QRect(660, 400, 80, 61))
+    self.face5_button.setGeometry(QRect(660, 420, 80, 61))
     self.face5_button.setObjectName("face5_button")
     self.face5_button.clicked.connect(lambda: self.set_face('smile'))
     self.face5_button.clicked.connect(lambda: self.set_servos('GESTO 5'))
@@ -129,11 +129,13 @@ def setupUi(self):
     self.DR_button.setText(_translate("MainWindow", "DR"))
     self.DL_button.setText(_translate("MainWindow", "DL"))
     self.UL_button.setText(_translate("MainWindow", "UL"))
-    self.face2_button.setText(_translate("MainWindow", "Secuencia 2"))
     self.face1_button.setText(_translate("MainWindow", "Secuencia 1"))
+    self.face2_button.setText(_translate("MainWindow", "Secuencia 2"))
     self.face3_button.setText(_translate("MainWindow", "Secuencia 3"))
     self.face4_button.setText(_translate("MainWindow", "Secuencia 4"))
     self.face5_button.setText(_translate("MainWindow", "Secuencia 5"))
+
+    
     self.D_button.setText(_translate("MainWindow", "DOWN"))
     self.L_button.setText(_translate("MainWindow", "LEFT"))
     self.U_button.setText(_translate("MainWindow", "UP"))
