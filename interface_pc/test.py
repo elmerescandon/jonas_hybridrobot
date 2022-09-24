@@ -32,16 +32,15 @@ class UI_MainWindow(QMainWindow):
         # Additional Widgets
         self.slider.valueChanged.connect(self.changeValue)
 
-        self.timer_mov = QTimer()   
-        self.timer_mov.timeout.connect(self.button_timeout)
+        # self.timer_mov = QTimer()   
+        # self.timer_mov.timeout.connect(self.button_timeout)
 
         self.direction = ''
         self.current_value = 0
  
         # Message to send - Multiarray
         self.mov_msg = Int16MultiArray()
-
-        self.mov_dic = {'UP': 1, 'DOWN': 2, 'LEFT':3, 'RIGHT':4}
+        self.mov_dic = {'UP': 1, 'DOWN': 2, 'LEFT':3, 'RIGHT':4,'UP-RIGHT':5,'DOWN-RIGHT':6,'DOWN-LEFT':7,'UP-LEFT':8}
 
     def set_face(self,expression):
         self.pub_face.publish(expression)
@@ -51,16 +50,21 @@ class UI_MainWindow(QMainWindow):
 
     def button_pressed(self, direction):
         self.direction = direction
-        self.timer_mov.start(100)
-
-    def button_released(self):
-        self.timer_mov.stop()
-    
-    def button_timeout(self):
         self.mov_msg.data = [self.mov_dic[self.direction],self.current_value]
         print(self.direction)
         print(self.current_value)
         self.pub_mov.publish(self.mov_msg)
+
+        # self.timer_mov.start(100)
+
+    # def button_released(self):
+        # self.timer_mov.stop()
+    
+    # def button_timeout(self):
+        # self.mov_msg.data = [self.mov_dic[self.direction],self.current_value]
+        # print(self.direction)
+        # print(self.current_value)
+        # self.pub_mov.publish(self.mov_msg)
 
     def changeValue(self,value):
         self.my_label.setText("num: " + str(value))

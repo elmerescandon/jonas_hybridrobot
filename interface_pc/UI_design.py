@@ -29,44 +29,50 @@ def setupUi(self):
     self.D_button.setGeometry(QRect(375, 330, 50, 50))
     self.D_button.setObjectName("D_button")
     self.D_button.pressed.connect(lambda: self.button_pressed('DOWN'))
-    self.D_button.released.connect(self.button_released)
+    # self.D_button.released.connect(self.button_released)
 
     self.L_button = QPushButton(self.centralwidget)
     self.L_button.setGeometry(QRect(530, 240, 50, 50))
     self.L_button.setObjectName("L_button")
     self.L_button.pressed.connect(lambda: self.button_pressed('LEFT'))
-    self.L_button.released.connect(self.button_released)
+    # self.L_button.released.connect(self.button_released)
 
     self.U_button = QPushButton(self.centralwidget)
     self.U_button.setGeometry(QRect(375, 160, 50, 50))
     self.U_button.setObjectName("U_button")
     self.U_button.pressed.connect(lambda: self.button_pressed('UP'))
-    self.U_button.released.connect(self.button_released)
+    # self.U_button.released.connect(self.button_released)
 
     self.R_button = QPushButton(self.centralwidget)
     self.R_button.setGeometry(QRect(230, 250, 50, 50))
     self.R_button.setObjectName("R_button")
     self.R_button.pressed.connect(lambda: self.button_pressed('RIGHT'))
-    self.R_button.released.connect(self.button_released)
+    # self.R_button.released.connect(self.button_released)
+    
 
     self.UR_button = QPushButton(self.centralwidget)
     self.UR_button.setGeometry(QRect(450, 200, 50, 50))
     self.UR_button.setObjectName("UR_button")
+    self.UR_button.pressed.connect(lambda: self.button_pressed('UP-RIGHT'))
 
 
     self.DR_button = QPushButton(self.centralwidget)
     self.DR_button.setGeometry(QRect(450, 290, 50, 50))
     self.DR_button.setObjectName("DR_button")
+    self.DR_button.pressed.connect(lambda: self.button_pressed('DOWN-RIGHT'))
+
 
 
     self.DL_button = QPushButton(self.centralwidget)
     self.DL_button.setGeometry(QRect(300, 290, 50, 50))
     self.DL_button.setObjectName("DL_button")
+    self.DL_button.pressed.connect(lambda: self.button_pressed('DOWN-LEFT'))
 
 
     self.UL_button = QPushButton(self.centralwidget)
     self.UL_button.setGeometry(QRect(300, 200, 50, 50))
     self.UL_button.setObjectName("UL_button")
+    self.UL_button.pressed.connect(lambda: self.button_pressed('UP-LEFT'))
 
 
     # Diseño de todos los gestos posibles
